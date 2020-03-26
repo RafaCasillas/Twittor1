@@ -3,8 +3,8 @@
 importScripts('js/sw-utils.js');
 
 
-const static_cache = 'static-v3';
-const dynamic_cache = 'dynamic-v1';
+const static_cache = 'static-v4';
+const dynamic_cache = 'dynamic-v2';
 const inmutable_cache = 'inmutable-v1';
 
 const APP_SHELL = [
@@ -49,6 +49,10 @@ self.addEventListener('activate', e => {
             if (key !== static_cache && key.includes('static')) {
                 return caches.delete(key);
             }    
+
+            if (key !== dynamic_cache && key.includes('dynamic')) {
+                return caches.delete(key);
+            }   
         });
     });
 
